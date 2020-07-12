@@ -1,14 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
-diary_routes = require('./src/routes/diary_routes.js');
-user_routes = require('./src/routes/user_routes.js');
-index_routes = require('./src/routes/index_routes.js');
+let diary_routes = require('./routes/diary_routes.js');
+let user_routes = require('./routes/user_routes.js');
+let index_routes = require('./routes/index_routes.js');
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -4,6 +4,8 @@
     "allowJs": true,
     "sourceMap": true,
     "moduleResolution": "node",
+    "declaration":true,
+    "resolveJsonModule": true,
     "target": "es6"
   },
   "exclude": [

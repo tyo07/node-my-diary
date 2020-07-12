@@ -1,5 +1,5 @@
-let index_routes = require('../controllers');
+let index_routes_controller = require('../controllers');
 
 module.exports = function(app) {
-    app.route('/').get(index_routes.index);
+    app.route('/').get(index_routes_controller.index);
 };

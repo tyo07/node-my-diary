@@ -12,7 +12,7 @@ exports.delete = function(req, res) {
 
 exports.add = async function (req, res) {
   // call with promise
-  const result = await callDbPromise();
+  const result = await dbConnection.execute('SELECT post_id  FROM node_diary.diary WHERE post_id=?', [1], {prepare: true});
   console.log('select data from cassandra db ' + result.rows[0].post_id);
 
   // call with callback
@@ -40,12 +40,4 @@ function callDb(callback)
 }
 
 
-function callDbPromise()
-{
-  return new Promise((resolve, reject) => {
-    let query = 'SELECT post_id  FROM node_diary.diary WHERE post_id=?';
-    dbConnection.execute(query, [1], {prepare: true}, (err, result) => {
-      return err ? reject(err) : resolve(result);
-    });
-  });
-}
+
