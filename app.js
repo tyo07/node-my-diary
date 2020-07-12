@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-diary_routes = require('./routes/diary_routes.js');
-user_routes = require('./routes/user_routes.js');
-index_routes = require('./routes/index_routes.js');
+diary_routes = require('./src/routes/diary_routes.js');
+user_routes = require('./src/routes/user_routes.js');
+index_routes = require('./src/routes/index_routes.js');
 
 var app = express();
 

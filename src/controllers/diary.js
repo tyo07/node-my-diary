@@ -1,10 +1,4 @@
-var cassandra = require('cassandra-driver');
-const client = new cassandra.Client({
-  contactPoints: ['localhost'],
-  localDataCenter: 'datacenter1',
-  keyspace: 'node_diary'
-});
-
+let Database = require('../helpers/database'), config = require('../config/config'), dbConnection = new Database(config)
 
 
 exports.edit = function(req, res) {
@@ -37,7 +31,7 @@ exports.add = async function (req, res) {
 function callDb(callback)
 {
   let query = 'SELECT post_id  FROM node_diary.diary WHERE post_id=?';
-  client.execute(query, [1], { prepare : true }, function(err, result) {
+  dbConnection.execute(query, [1], { prepare : true }, function(err, result) {
     if(err)
       callback(err, null)
     else
@@ -50,7 +44,7 @@ function callDbPromise()
 {
   return new Promise((resolve, reject) => {
     let query = 'SELECT post_id  FROM node_diary.diary WHERE post_id=?';
-    client.execute(query, [1], {prepare: true}, (err, result) => {
+    dbConnection.execute(query, [1], {prepare: true}, (err, result) => {
       return err ? reject(err) : resolve(result);
     });
   });
