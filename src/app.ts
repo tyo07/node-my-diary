@@ -1,14 +1,19 @@
 let createError = require('http-errors');
-let express = require('express');
+import * as express from "express";
+import { Application, Request, Response, NextFunction } from 'express';
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let diary_routes = require('./routes/diary_routes.js');
-let user_routes = require('./routes/user_routes.js');
-let index_routes = require('./routes/index_routes.js');
+let diary_routes = require('./routes/diary_routes');
+let user_routes = require('./routes/user_routes');
+let index_routes = require('./routes/index_routes');
 
-let app = express();
+const app: Application = express();
+
+app.listen(8080, ()=>{
+  console.log('server runnning')
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,5 +45,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
