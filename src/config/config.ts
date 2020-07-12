@@ -1,4 +1,4 @@
-var config = {};
+let config = {} as any;
 
 config.contactPoints= ['localhost'];
 config.localDataCenter= 'datacenter1';

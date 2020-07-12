@@ -1,4 +1,4 @@
-let Database = require('../helpers/database'), config = require('../config/config'), dbConnection = new Database(config)
+let Database = require('../helpers/database'), dbConfig = require('../config/config'), dbConnection = new Database(dbConfig)
 
 
 exports.edit = function(req, res) {
